@@ -1,6 +1,6 @@
 package com.minzerry.starcraftvoyage;
 
-import com.minzerry.starcraftvoyage.item.ModItem;
+import com.minzerry.starcraftvoyage.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -32,7 +32,9 @@ public class StarCraftVoyage {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        ModItem.register(modEventBus);
+        ModBlocks.register(modEventBus);
+        ModItems.register(modEventBus);
+
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -47,11 +49,11 @@ public class StarCraftVoyage {
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItem.BIOMASS);
-            event.accept(ModItem.VESPENEGAS);
-            event.accept(ModItem.KHAYDARINSHARDS);
-            event.accept(ModItem.MINERALS);
-            event.accept(ModItem.STEEL);
+            event.accept(ModItems.BIOMASS);
+            event.accept(ModItems.VESPENEGAS);
+            event.accept(ModItems.KHAYDARINSHARDS);
+            event.accept(ModItems.MINERALS);
+            event.accept(ModItems.STEEL);
         }
     }
 
